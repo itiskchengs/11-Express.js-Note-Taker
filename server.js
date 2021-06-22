@@ -7,8 +7,6 @@ const fs = require('fs');
 const app = express();
 let PORT = process.env.PORT || 3001;
 
-//Note empty array 
-
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -22,14 +20,14 @@ app.get('/api/notes', (req, res) => res.sendFile(path.join(__dirname, '/db/db.js
 
 //Set post route to get the data from the notes in the json file
 app.post('/api/notes', (req, res) => {
-    let newNote = req.body;
+    let newList = req.body;
     fs.readFile('db/db.json', 'utf8', (err, data) => {
         console.log(data);
         let noteContainer = JSON.parse(data);
         if (err) {
             throw err;
         } else {
-            noteContainer.push(newNote);
+            noteContainer.push(newList);
         }
         fs.writeFile('db/db.json', JSON.stringify(noteContainer), err => {
             if (err) {
@@ -40,7 +38,7 @@ app.post('/api/notes', (req, res) => {
         })
         res.send('saved');
     })
-    
+
 })
 
 app.delete('/api/notes/:id', (req, res) => {
