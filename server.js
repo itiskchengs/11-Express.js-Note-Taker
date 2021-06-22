@@ -5,7 +5,7 @@ const fs = require('fs');
 
 //Set up express app
 const app = express();
-let PORT = 3000;
+let PORT = process.env.PORT || 3001;
 
 //Note empty array 
 
