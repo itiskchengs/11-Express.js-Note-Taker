@@ -34,7 +34,7 @@ app.post('/api/notes', (req, res) => {
             fs.writeFile('db/db.json', JSON.stringify(noteContainer), 'utf8', fileRead);
         }
     })
-    res.status(200).send(console.log('Note sent'));
+    res.send(JSON.stringify(newNote));
 })
 
 app.delete('/api/notes/:id', (req, res) => {
