@@ -5,12 +5,12 @@ const fs = require('fs');
 
 //Set up express app
 const app = express();
-var PORT = process.env.PORT || 3001;
+let PORT = process.env.PORT || 3001;
 
 //Note empty array 
 
 // Sets up the Express app to handle data parsing
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(__dirname + '/public'));
 
