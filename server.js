@@ -25,12 +25,13 @@ app.get('/api/notes', (req, res) => res.sendFile(path.join(__dirname, '/db/db.js
 //Set post route to get the data from the notes in the json file
 app.post('/api/notes', (req, res) => {
     let newNote = req.body;
+    console.warn(newNote);
     fs.readFile('./db/db.json', 'utf8', function fileRead(err, data) {
         let noteContainer = JSON.parse(data);
         if (err) {
             throw err;
         } else {
-            noteContainer.push(newNote);
+            noteContainer.push(JSON.parse(newNote));
             fs.writeFile('./db/db.json', JSON.stringify(noteContainer), 'utf8', fileRead);
         }
     })
