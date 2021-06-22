@@ -6,7 +6,7 @@ In this homework I worked with the code that was already provided. For this home
 # Screenshot
 <br>
 
-![Express.js-Note-Taker](./public/assets/screenshot/note-take.png)
+![Express.js-Note-Taker](./public/assets/screenshot/note-take.PNG)
 
 <br>
 
