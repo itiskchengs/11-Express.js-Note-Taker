@@ -2,18 +2,17 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
-const { resolveSoa } = require('dns');
 
 //Set up express app
 const app = express();
-let PORT = process.env.PORT || 3001;
+var PORT = process.env.PORT || 3001;
 
 //Note empty array 
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
-app.use(express.static(__dirname + '/public/'));
+app.use(express.static(__dirname + '/public'));
 
 
 //Set up the get route
@@ -32,7 +31,7 @@ app.post('/api/notes', (req, res) => {
         if (err) {
             throw err;
         } else {
-            noteContainer.push(JSON.stringify(newNote));
+            noteContainer.push(newNote);
             fs.writeFile('./db/db.json', JSON.stringify(noteContainer), 'utf8', fileRead);
         }
     })
